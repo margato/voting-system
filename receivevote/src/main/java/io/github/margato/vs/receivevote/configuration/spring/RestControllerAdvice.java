@@ -1,7 +1,6 @@
 package io.github.margato.vs.receivevote.configuration.spring;
 
 import io.github.margato.vs.receivevote.boundaries.http.presenter.dtos.response.ErrorResponse;
-import io.github.margato.vs.receivevote.domain.exceptions.BaseException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
