@@ -1,0 +1,24 @@
+server:
+  port: 0
+  servlet:
+    context-path: /votings/v1
+kafka:
+  topic:
+    new-vote: votings.vote.new
+
+spring:
+  application:
+    name: validate-vote-app
+  kafka:
+    listener:
+      ack-mode: MANUAL
+    consumer:
+      group-id: votes-validator
+      bootstrap-servers: localhost:29092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.json.trusted.packages: io.github.margato.vs.*
+        spring.json.type.mapping: io.github.margato.vs.receivevote.boundaries.messaging.dtos.KafkaMessage:io.github.margato.vs.validatevote.boundaries.messaging.dtos.KafkaMessage
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer

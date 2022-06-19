@@ -1,9 +1,9 @@
-package io.github.margato.vs.receivevote.boundaries.messaging.producer;
+package io.github.margato.vs.validatevote.boundaries.messaging.producers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.margato.vs.receivevote.boundaries.messaging.dtos.KafkaMessage;
-import io.github.margato.vs.receivevote.boundaries.messaging.exceptions.MessageNotDeliveredException;
-import io.github.margato.vs.receivevote.domain.gateways.SendMessageGateway;
+import io.github.margato.vs.validatevote.boundaries.messaging.dtos.KafkaMessage;
+import io.github.margato.vs.validatevote.boundaries.messaging.exceptions.MessageNotDeliveredException;
+import io.github.margato.vs.validatevote.domain.gateways.SendMessageGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -51,11 +51,14 @@ public class KafkaProducer implements SendMessageGateway {
                     .build();
 
             SendResult<String, KafkaMessage> sendResult = kafkaTemplate.send(topic, key, kafkaMessage).get();
+            RecordMetadata recordMetadata = sendResult.getRecordMetadata();
 
             log.info(
-                    "Message sent to kafka topic '{}' - Record: {}",
+                    "Message sent to kafka topic '{}' with key {}, partition {}, offset {}",
                     topic,
-                    sendResult.getProducerRecord().toString()
+                    key,
+                    recordMetadata.partition(),
+                    recordMetadata.offset()
             );
         } catch (Exception e) {
             e.printStackTrace();

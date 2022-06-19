@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "kafka.topic.new-vote",
+      "type": "java.lang.String",
+      "description": "Topic that receives new votes."
+  }
+] }

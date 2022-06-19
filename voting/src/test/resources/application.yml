@@ -2,6 +2,7 @@ server:
   port: 8080
   servlet:
     context-path: /votings/v1
+
 kafka:
   topic:
     new-vote: votings.vote.new
@@ -14,7 +15,6 @@ spring:
     username: root
     password:
     url: jdbc:mysql://localhost:3306/voting
-
 
 logging:
   level:

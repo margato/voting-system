@@ -1,4 +1,4 @@
-package io.github.margato.vs.voting.domain.entities;
+package io.github.margato.vs.validatevote.domain.entities;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -24,11 +24,13 @@ public class Voting {
 
     public boolean canAddCandidate() {
         LocalDateTime now = LocalDateTime.now();
-        boolean validTime = active && now.isBefore(endTime);
+        boolean validTime = active && now.isBefore(startTime);
         return validTime && candidates.size() < maxCandidates;
     }
 
-    public boolean cannotAddCandidate() {
-        return !canAddCandidate();
+    public boolean hasCandidate(String candidateId) {
+        return candidates
+                .stream()
+                .anyMatch(candidate -> candidate.getId().equals(candidateId));
     }
 }

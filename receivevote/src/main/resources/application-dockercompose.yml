@@ -1,0 +1,17 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /votings/v1
+kafka:
+  topic:
+    new-vote: votings.vote.new
+
+spring:
+  application:
+    name: receive-vote-app
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: 1
+      bootstrap-servers: kafkabroker:9092

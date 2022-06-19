@@ -1,16 +1,16 @@
-package io.github.margato.vs.receivevote.boundaries.messaging.dtos;
+package io.github.margato.vs.validatevote.boundaries.messaging.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.ToString;
+import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Builder
-@ToString
+@Jacksonized
 public class KafkaMessage {
     private String id;
 

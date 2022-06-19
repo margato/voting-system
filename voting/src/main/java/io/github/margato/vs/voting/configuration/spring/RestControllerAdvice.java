@@ -1,7 +1,7 @@
 package io.github.margato.vs.voting.configuration.spring;
 
 import io.github.margato.vs.voting.boundaries.http.presenter.dtos.response.ErrorResponse;
-import io.github.margato.vs.voting.domain.exceptions.AmountOfCandidatesExceededException;
+import io.github.margato.vs.voting.domain.exceptions.VotingIllegalStateException;
 import io.github.margato.vs.voting.domain.exceptions.BaseException;
 import io.github.margato.vs.voting.domain.exceptions.VotingNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseBody
 public class RestControllerAdvice {
 
-    @ExceptionHandler({AmountOfCandidatesExceededException.class})
+    @ExceptionHandler({VotingIllegalStateException.class})
     @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
     public ErrorResponse businessLogicError(BaseException e) {
         return ErrorResponse.builder()

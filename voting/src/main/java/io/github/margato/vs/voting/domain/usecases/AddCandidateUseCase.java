@@ -2,7 +2,7 @@ package io.github.margato.vs.voting.domain.usecases;
 
 import io.github.margato.vs.voting.domain.entities.Candidate;
 import io.github.margato.vs.voting.domain.entities.Voting;
-import io.github.margato.vs.voting.domain.exceptions.AmountOfCandidatesExceededException;
+import io.github.margato.vs.voting.domain.exceptions.VotingIllegalStateException;
 import io.github.margato.vs.voting.domain.exceptions.VotingNotFoundException;
 import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
 import io.github.margato.vs.voting.domain.gateways.AddCandidateGateway;
@@ -22,12 +22,12 @@ public class AddCandidateUseCase {
         }
 
         Voting voting = votingOptional.get();
-        int amountOfCandidates = voting.getCandidates().size();
 
-        if (amountOfCandidates == voting.getMaxCandidates()) {
-            throw new AmountOfCandidatesExceededException();
+        if (voting.cannotAddCandidate()) {
+            throw new VotingIllegalStateException();
         }
 
         return addCandidateGateway.add(votingId, candidate);
     }
+
 }
