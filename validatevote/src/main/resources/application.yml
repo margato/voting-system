@@ -6,6 +6,10 @@ kafka:
   topic:
     new-vote: votings.vote.new
 
+voting-api:
+  url: http://localhost:8080
+  path: /votings/v1/votings
+
 spring:
   application:
     name: validate-vote-app
