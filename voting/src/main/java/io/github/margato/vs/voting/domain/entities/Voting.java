@@ -10,22 +10,21 @@ import java.util.List;
 @Builder
 public class Voting {
     private String id;
+    private String name;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private boolean active;
-    private int maxCandidates;
-    private int minCandidates;
     private List<Candidate> candidates;
 
     public boolean isClosed() {
         LocalDateTime now = LocalDateTime.now();
-        return !active || now.isBefore(startTime) || now.isAfter(endTime);
+        boolean doesNotHaveMinimumCandidates = candidates.size() <= 1;
+        return doesNotHaveMinimumCandidates || !active || now.isBefore(startTime) || now.isAfter(endTime);
     }
 
     public boolean canAddCandidate() {
         LocalDateTime now = LocalDateTime.now();
-        boolean validTime = active && now.isBefore(endTime);
-        return validTime && candidates.size() < maxCandidates;
+        return active && now.isBefore(endTime);
     }
 
     public boolean cannotAddCandidate() {

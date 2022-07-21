@@ -14,8 +14,6 @@ public class VotingRequest {
     private LocalDateTime startTime;
     @JsonProperty("end_time")
     private LocalDateTime endTime;
-    @JsonProperty("min_candidates")
-    private int minCandidates;
-    @JsonProperty("max_candidates")
-    private int maxCandidates;
+
+    private String name;
 }

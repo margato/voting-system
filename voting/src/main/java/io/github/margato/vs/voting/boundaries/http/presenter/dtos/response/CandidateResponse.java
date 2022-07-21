@@ -7,11 +7,14 @@ import lombok.Getter;
 
 @Getter
 @Builder
-@JsonPropertyOrder({"id", "name"})
+@JsonPropertyOrder({"id", "name", "image_url"})
 public class CandidateResponse {
     @JsonProperty("id")
     private String id;
 
     @JsonProperty("name")
     private String name;
+
+    @JsonProperty("image_url")
+    private String imageUrl;
 }

@@ -10,10 +10,13 @@ import java.util.List;
 
 @Getter
 @Builder
-@JsonPropertyOrder({"id", "start_time", "end_time", "min_candidates", "max_candidates", "active"})
+@JsonPropertyOrder({"id", "name", "start_time", "end_time",  "active"})
 public class VotingResponse {
     @JsonProperty("id")
     private String id;
+
+    @JsonProperty("name")
+    private String name;
 
     @JsonProperty("start_time")
     private LocalDateTime startTime;
@@ -23,12 +26,6 @@ public class VotingResponse {
 
     @JsonProperty("active")
     private boolean active;
-
-    @JsonProperty("min_candidates")
-    private int minCandidates;
-
-    @JsonProperty("max_candidates")
-    private int maxCandidates;
 
     @JsonProperty("candidates")
     private List<CandidateResponse> candidates;

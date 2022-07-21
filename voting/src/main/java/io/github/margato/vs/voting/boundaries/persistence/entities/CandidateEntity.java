@@ -14,11 +14,14 @@ import java.util.UUID;
 public class CandidateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private UUID id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "voting_id")

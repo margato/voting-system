@@ -16,20 +16,17 @@ import java.util.UUID;
 public class VotingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private UUID id;
 
-    @Column(name = "start_time", nullable = false)
+    @Column(name = "start_time")
     private LocalDateTime startTime;
 
-    @Column(name = "end_time", nullable = false)
+    @Column(name = "end_time")
     private LocalDateTime endTime;
 
-    @Column(name = "min_candidates", nullable = false)
-    private int minCandidates;
-
-    @Column(name = "max_candidates", nullable = false)
-    private int maxCandidates;
+    @Column(name = "name")
+    private String name;
 
     @Setter
     @Column(name = "active")

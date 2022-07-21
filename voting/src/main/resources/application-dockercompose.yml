@@ -12,9 +12,9 @@ spring:
     name: votings-app
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password:
-    url: jdbc:mysql://db:3306/voting
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${MYSQL_ENDPOINT}:3306/voting
 
 logging:
   level:

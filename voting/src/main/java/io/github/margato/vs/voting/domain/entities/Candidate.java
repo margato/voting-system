@@ -8,4 +8,5 @@ import lombok.Getter;
 public class Candidate {
     private String id;
     private String name;
+    private String imageUrl;
 }

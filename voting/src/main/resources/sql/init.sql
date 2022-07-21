@@ -6,8 +6,7 @@ CREATE TABLE IF NOT EXISTS votings
     id             BINARY(16) PRIMARY KEY,
     start_time     TIMESTAMP,
     end_time       TIMESTAMP,
-    min_candidates INT UNSIGNED,
-    max_candidates INT UNSIGNED,
+    name           VARCHAR(200),
     active         BOOLEAN,
     created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at     DATETIME  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -17,6 +16,7 @@ CREATE TABLE IF NOT EXISTS candidates
 (
     id         BINARY(16) PRIMARY KEY,
     name       VARCHAR(50),
+    image_url  VARCHAR(1024),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     voting_id  BINARY(16) NOT NULL,
