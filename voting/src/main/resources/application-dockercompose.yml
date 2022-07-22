@@ -15,10 +15,3 @@ spring:
     username: ${MYSQL_USERNAME}
     password: ${MYSQL_PASSWORD}
     url: jdbc:mysql://${MYSQL_ENDPOINT}:3306/voting
-
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type: TRACE

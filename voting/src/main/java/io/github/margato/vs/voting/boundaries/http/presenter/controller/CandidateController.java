@@ -8,12 +8,14 @@ import io.github.margato.vs.voting.boundaries.http.presenter.mappers.CandidateRe
 import io.github.margato.vs.voting.domain.entities.Candidate;
 import io.github.margato.vs.voting.domain.usecases.AddCandidateUseCase;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/votings/{voting_id}/candidates")
 @RequiredArgsConstructor
+@Slf4j
 public class CandidateController {
     private final AddCandidateUseCase addCandidateUseCase;
     private final CandidateRequestMapper candidateRequestMapper;
@@ -24,6 +26,7 @@ public class CandidateController {
     public BaseResponse<CandidateResponse> add(@PathVariable("voting_id") String votingId,
                                                @RequestBody CandidateRequest candidateRequest) {
         Candidate candidate = addCandidateUseCase.add(votingId, candidateRequestMapper.toDomain(candidateRequest));
+        log.info("Candidate saved");
         return new BaseResponse<>(candidateResponseMapper.fromDomain(candidate));
     }
 

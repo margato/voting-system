@@ -16,12 +16,12 @@ public class ValidateVoteUseCase {
     public void validate(String votingId, String candidateId) {
         Voting voting = getVotingByIdGateway.findById(votingId);
         if (voting.isClosed()) {
-            log.info("Voting {} already closed", voting);
+            log.error("Voting {} already closed", voting.getId());
             return;
         }
 
         if (!voting.hasCandidate(candidateId)) {
-            log.info("Voting {} does not have candidate {}", voting, candidateId);
+            log.error("Voting {} does not have candidate {}", voting.getId(), candidateId);
             return;
         }
 

@@ -9,4 +9,12 @@ public class Candidate {
     private String id;
     private String name;
     private String imageUrl;
+
+    @Override
+    public String toString() {
+        return "Candidate{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

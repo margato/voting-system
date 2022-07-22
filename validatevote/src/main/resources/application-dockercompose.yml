@@ -5,7 +5,7 @@ kafka:
     new-vote: votings.vote.new
 
 voting-api:
-  url: http://localhost:8080
+  url: http://voting:8080
   path: /votings/v1/votings
 
 spring:

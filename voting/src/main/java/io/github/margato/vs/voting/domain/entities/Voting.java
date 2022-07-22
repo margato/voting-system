@@ -16,6 +16,14 @@ public class Voting {
     private boolean active;
     private List<Candidate> candidates;
 
+    @Override
+    public String toString() {
+        return "Voting{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
     public boolean isClosed() {
         LocalDateTime now = LocalDateTime.now();
         boolean doesNotHaveMinimumCandidates = candidates.size() <= 1;

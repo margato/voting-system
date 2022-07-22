@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Builder
 public class VotingResponse {
+    private String id;
     @JsonProperty("start_time")
     private LocalDateTime startTime;
     @JsonProperty("end_time")

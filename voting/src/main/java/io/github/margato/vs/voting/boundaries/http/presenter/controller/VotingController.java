@@ -9,12 +9,14 @@ import io.github.margato.vs.voting.domain.entities.Voting;
 import io.github.margato.vs.voting.domain.usecases.CreateVotingUseCase;
 import io.github.margato.vs.voting.domain.usecases.GetVotingByIdUseCase;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping({"/votings"})
 @RequiredArgsConstructor
+@Slf4j
 public class VotingController {
     private final CreateVotingUseCase createVotingUseCase;
     private final GetVotingByIdUseCase getVotingByIdUseCase;
@@ -25,6 +27,7 @@ public class VotingController {
     @ResponseStatus(HttpStatus.CREATED)
     public BaseResponse<VotingResponse> create(@RequestBody VotingRequest votingRequest) {
         Voting voting = this.createVotingUseCase.create(this.votingRequestMapper.toDomain(votingRequest));
+        log.info("Voting saved: {}", voting.toString());
         return new BaseResponse(this.votingResponseMapper.fromDomain(voting));
     }
 
@@ -32,6 +35,7 @@ public class VotingController {
     @ResponseStatus(HttpStatus.OK)
     public BaseResponse<VotingResponse> get(@PathVariable(name = "id") String id) {
         Voting voting = this.getVotingByIdUseCase.get(id);
+        log.info("Voting retrieved: {}", voting.toString());
         return new BaseResponse(this.votingResponseMapper.fromDomain(voting));
     }
 }
