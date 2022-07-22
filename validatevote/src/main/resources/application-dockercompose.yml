@@ -10,7 +10,7 @@ voting-api:
 
 spring:
   redis:
-    host: localhost
+    host: redis
     port: 6379
   application:
     name: validate-vote-app
@@ -19,7 +19,7 @@ spring:
       ack-mode: MANUAL
     consumer:
       group-id: votes-validator
-      bootstrap-servers: localhost:29092
+      bootstrap-servers: kafkabroker:9092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
