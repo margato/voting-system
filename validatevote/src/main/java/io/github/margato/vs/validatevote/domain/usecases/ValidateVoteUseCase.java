@@ -15,6 +15,8 @@ public class ValidateVoteUseCase {
 
     public void validate(String votingId, String candidateId) {
         Voting voting = getVotingByIdGateway.findById(votingId);
+        log.info(voting.toString());
+
         if (voting.isClosed()) {
             log.error("Voting {} already closed", voting.getId());
             return;
