@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>io.github.margato.vs</groupId>
-    <artifactId>receivevote</artifactId>
+    <artifactId>validatevote</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>voting</name>
-    <description>voting</description>
+    <name>validatevote</name>
+    <description>validatevote</description>
     <properties>
         <java.version>11</java.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>

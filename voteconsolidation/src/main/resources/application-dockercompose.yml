@@ -2,25 +2,22 @@ server:
   port: 0
 kafka:
   topic:
-    new-vote: votings.vote.new
     process-vote: votings.vote.process
 
-voting-api:
-  url: http://voting:8080
-  path: /votings/v1/votings
-
 spring:
-  redis:
-    host: redis
-    port: 6379
   application:
-    name: validate-vote-app
+    name: voteconsolidation
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${MYSQL_ENDPOINT}:3306/voting
   kafka:
     listener:
       ack-mode: MANUAL
     consumer:
-      group-id: votes-validator
-      bootstrap-servers: kafkabroker:9092
+      group-id: votes-consolidation
+      bootstrap-servers: localhost:29092
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:

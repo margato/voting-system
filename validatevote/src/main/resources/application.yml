@@ -3,6 +3,7 @@ server:
 kafka:
   topic:
     new-vote: votings.vote.new
+    process-vote: votings.vote.process
 
 voting-api:
   url: http://localhost:8080

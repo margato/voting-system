@@ -25,7 +25,7 @@ public class KafkaProducer implements SendMessageGateway {
     private final KafkaTemplate<String, KafkaMessage> kafkaTemplate;
     private final ObjectMapper mapper;
 
-    @Value("${kafka.topic.new-vote}")
+    @Value("${kafka.topic.process-vote}")
     private String topic;
 
     @Value("${spring.application.name}")
