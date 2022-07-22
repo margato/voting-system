@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -15,6 +17,6 @@ public class CandidatePersistenceAdapter implements UpdateVoteCountGateway {
 
     @Override
     public void update(String candidateId, int votesReceived) throws InvalidCandidateException {
-        candidateRepository.updateCount(candidateId, votesReceived);
+        candidateRepository.updateCount(UUID.fromString(candidateId), votesReceived);
     }
 }

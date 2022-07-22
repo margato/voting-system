@@ -14,6 +14,6 @@ public interface CandidateRepository extends CrudRepository<CandidateEntity, UUI
     @Modifying(clearAutomatically = true)
     @Transactional
     @Query(nativeQuery = true, value = "UPDATE candidates SET votes = votes + :vote_received WHERE id = :candidate_id")
-    int updateCount(@Param("candidate_id") String candidateId, @Param("vote_received") int votesReceived);
+    int updateCount(@Param("candidate_id") UUID candidateId, @Param("vote_received") int votesReceived);
 
 }
