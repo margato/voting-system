@@ -8,6 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Getter
 public class VotingPayload {
+    private String id;
     private String votingId;
     private String candidateId;
 }
