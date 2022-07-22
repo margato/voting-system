@@ -5,16 +5,18 @@ import io.github.margato.vs.voting.boundaries.persistence.mappers.VotingEntityMa
 import io.github.margato.vs.voting.boundaries.persistence.repository.VotingRepository;
 import io.github.margato.vs.voting.domain.entities.Voting;
 import io.github.margato.vs.voting.domain.gateways.CreateVotingGateway;
+import io.github.margato.vs.voting.domain.gateways.GetAllVotingsGateway;
 import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingByIdGateway {
+public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingByIdGateway, GetAllVotingsGateway {
     private final VotingRepository votingRepository;
     private final VotingEntityMapper votingEntityMapper;
 
@@ -33,5 +35,10 @@ public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingB
     @Override
     public boolean existsById(String votingId) {
         return votingRepository.existsById(UUID.fromString(votingId));
+    }
+
+    @Override
+    public List<Voting> findAll() {
+        return votingEntityMapper.toDomain(votingRepository.findAll());
     }
 }

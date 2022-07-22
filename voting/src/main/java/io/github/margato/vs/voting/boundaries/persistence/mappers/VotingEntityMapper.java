@@ -5,6 +5,7 @@ import io.github.margato.vs.voting.domain.entities.Voting;
 import org.mapstruct.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Mapper(componentModel = "spring", uses = {CandidateEntityMapper.class, TypeMapper.class}, imports = ArrayList.class)
@@ -19,4 +20,5 @@ public interface VotingEntityMapper {
                 : Optional.of(toDomain(optionalVotingEntity.get()));
     }
 
+    List<Voting> toDomain(Iterable<VotingEntity> entities);
 }
