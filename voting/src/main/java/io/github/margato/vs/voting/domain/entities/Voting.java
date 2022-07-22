@@ -4,6 +4,8 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Getter
@@ -28,6 +30,12 @@ public class Voting {
         LocalDateTime now = LocalDateTime.now();
         boolean doesNotHaveMinimumCandidates = candidates.size() <= 1;
         return doesNotHaveMinimumCandidates || !active || now.isBefore(startTime) || now.isAfter(endTime);
+    }
+
+    public List<Candidate> getCandidates() {
+        candidates.sort(Comparator.comparing(Candidate::getVotes));
+        candidates.sort(Collections.reverseOrder());
+        return candidates;
     }
 
     public boolean canAddCandidate() {
