@@ -10,6 +10,6 @@ import java.util.UUID;
 public interface CandidateRepository extends CrudRepository<CandidateEntity, UUID> {
 
     @Query(nativeQuery = true, value = "UPDATE candidates SET votes = votes + :vote_received WHERE id = :candidate_id ")
-    void updateCount(@Param("candidate_id") String candidateId, @Param("vote_received") int votesReceived);
+    int updateCount(@Param("candidate_id") String candidateId, @Param("vote_received") int votesReceived);
 
 }
