@@ -23,10 +23,10 @@ public class RedisConfiguration {
     }
 
     @Bean
-    public RedisCacheConfiguration cacheConfiguration() {
+    public RedisCacheConfiguration cacheConfiguration(ObjectMapper mapper) {
         return RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofMinutes(5))
                 .disableCachingNullValues()
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer(mapper)));
     }
 }
