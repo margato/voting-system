@@ -18,6 +18,11 @@ spring:
   kafka:
     listener:
       ack-mode: MANUAL
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: 1
+      bootstrap-servers: kafkabroker:9092
     consumer:
       group-id: votes-validator
       bootstrap-servers: kafkabroker:9092
