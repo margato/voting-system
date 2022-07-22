@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "819533b6-de91-4ef5-8e38-d5a41dc675f3",
 		"name": "Voting System",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5402513"
 	},
 	"item": [
 		{
@@ -28,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"start_time\": \"2022-04-07T14:08:00.000\",\n    \"end_time\": \"2022-04-14T14:08:00.000\",\n    \"min_candidates\": 3,\n    \"max_candidates\": 3\n}",
+							"raw": "{\n    \"start_time\": \"2022-04-07T14:08:00.000\",\n    \"end_time\": \"2023-04-14T14:08:00.000\",\n    \"name\": \"dev do mes\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -36,16 +37,44 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/votings/v1/votings",
-							"protocol": "http",
+							"raw": "{{voting_url}}/votings/v1/votings",
 							"host": [
-								"localhost"
+								"{{voting_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"votings",
 								"v1",
 								"votings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Candidate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"image_url\": \"https://avatars.githubusercontent.com/u/15236942\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{voting_url}}/votings/v1/votings/{{voting_id}}/candidates",
+							"host": [
+								"{{voting_url}}"
+							],
+							"path": [
+								"votings",
+								"v1",
+								"votings",
+								"{{voting_id}}",
+								"candidates"
 							]
 						}
 					},
@@ -71,49 +100,15 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/votings/v1/votings/{{voting_id}}",
-							"protocol": "http",
+							"raw": "{{voting_url}}/votings/v1/votings/{{voting_id}}",
 							"host": [
-								"localhost"
+								"{{voting_url}}"
 							],
-							"port": "8080",
 							"path": [
 								"votings",
 								"v1",
 								"votings",
 								"{{voting_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Candidate",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"{{$randomFullName}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/votings/v1/votings/{{voting_id}}/candidates",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"votings",
-								"v1",
-								"votings",
-								"{{voting_id}}",
-								"candidates"
 							]
 						}
 					},
@@ -139,12 +134,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8081/votings/v1/votings/{{voting_id}}/votes",
-							"protocol": "http",
+							"raw": "{{vote_url}}/votings/v1/votings/{{voting_id}}/votes",
 							"host": [
-								"localhost"
+								"{{vote_url}}"
 							],
-							"port": "8081",
 							"path": [
 								"votings",
 								"v1",
