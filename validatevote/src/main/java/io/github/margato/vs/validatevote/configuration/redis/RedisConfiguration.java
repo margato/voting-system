@@ -19,7 +19,6 @@ public class RedisConfiguration {
     public ObjectMapper mapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
-        mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
         return mapper;
     }
 

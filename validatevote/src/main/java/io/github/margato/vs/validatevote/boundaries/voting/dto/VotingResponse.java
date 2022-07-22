@@ -1,5 +1,6 @@
 package io.github.margato.vs.validatevote.boundaries.voting.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ import java.util.List;
 @Jacksonized
 @Getter
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class VotingResponse {
     private String id;
     @JsonProperty("start_time")
