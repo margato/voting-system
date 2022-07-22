@@ -20,7 +20,7 @@ public class ValidateVoteUseCase {
             return;
         }
 
-        if (voting.hasMinimumCandidates()) {
+        if (voting.doesNotHaveMinimumCandidates()) {
             log.error("Voting {} does not have minimum candidates", voting.getId());
             return;
         }

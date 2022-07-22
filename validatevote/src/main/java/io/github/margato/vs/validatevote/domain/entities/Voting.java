@@ -20,7 +20,7 @@ public class Voting {
         return !active || now.isBefore(startTime) || now.isAfter(endTime);
     }
 
-    public boolean hasMinimumCandidates() {
+    public boolean doesNotHaveMinimumCandidates() {
         return candidates.size() > 1;
     }
 
