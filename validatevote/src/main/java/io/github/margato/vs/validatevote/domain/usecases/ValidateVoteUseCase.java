@@ -20,11 +20,17 @@ public class ValidateVoteUseCase {
             return;
         }
 
+        if (voting.hasMinimumCandidates()) {
+            log.error("Voting {} does not have minimum candidates", voting.getId());
+            return;
+        }
+
         if (!voting.hasCandidate(candidateId)) {
             log.error("Voting {} does not have candidate {}", voting.getId(), candidateId);
             return;
         }
 
+        log.info("Vote for {} in {} is valid", candidateId, votingId);
         sendVoteGateway.send(
                 Vote.builder()
                         .votingId(votingId)

@@ -13,8 +13,6 @@ public class Voting {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private boolean active;
-    private int maxCandidates;
-    private int minCandidates;
     private List<Candidate> candidates;
 
     public boolean isClosed() {
@@ -22,10 +20,8 @@ public class Voting {
         return !active || now.isBefore(startTime) || now.isAfter(endTime);
     }
 
-    public boolean canAddCandidate() {
-        LocalDateTime now = LocalDateTime.now();
-        boolean validTime = active && now.isBefore(startTime);
-        return validTime && candidates.size() < maxCandidates;
+    public boolean hasMinimumCandidates() {
+        return candidates.size() > 1;
     }
 
     public boolean hasCandidate(String candidateId) {
