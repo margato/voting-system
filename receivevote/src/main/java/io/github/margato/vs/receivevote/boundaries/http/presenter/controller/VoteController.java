@@ -1,6 +1,5 @@
 package io.github.margato.vs.receivevote.boundaries.http.presenter.controller;
 
-import io.github.margato.vs.receivevote.boundaries.http.presenter.dtos.request.VoteRequest;
 import io.github.margato.vs.receivevote.domain.usecases.AsyncVoteUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 public class VoteController {
     private final AsyncVoteUseCase asyncVoteUseCase;
 
-    @PostMapping
+    @PostMapping("/{candidate_id}/votes")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void add(@PathVariable("voting_id") String votingId,
-                                               @RequestBody VoteRequest voteRequest) {
-        asyncVoteUseCase.vote(votingId, voteRequest.getCandidateId());
+                    @PathVariable("candidate_id") String candidateId) {
+        asyncVoteUseCase.vote(votingId, candidateId);
     }
 
 }
