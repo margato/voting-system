@@ -13,9 +13,9 @@ import java.util.List;
 public class Voting {
     private String id;
     private String name;
+    private boolean open;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private boolean active;
     private List<Candidate> candidates;
 
     @Override
@@ -26,10 +26,10 @@ public class Voting {
                 '}';
     }
 
-    public boolean isClosed() {
+    public boolean isOpen() {
         LocalDateTime now = LocalDateTime.now();
         boolean doesNotHaveMinimumCandidates = candidates.size() <= 1;
-        return doesNotHaveMinimumCandidates || !active || now.isBefore(startTime) || now.isAfter(endTime);
+        return doesNotHaveMinimumCandidates || now.isBefore(startTime) || now.isAfter(endTime);
     }
 
     public List<Candidate> getCandidates() {
@@ -40,7 +40,7 @@ public class Voting {
 
     public boolean canAddCandidate() {
         LocalDateTime now = LocalDateTime.now();
-        return active && now.isBefore(endTime);
+        return now.isBefore(endTime);
     }
 
     public boolean cannotAddCandidate() {
