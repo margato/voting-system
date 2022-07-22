@@ -25,6 +25,7 @@ public class VotingController {
     private final CreateVotingUseCase createVotingUseCase;
     private final GetVotingByIdUseCase getVotingByIdUseCase;
     private final GetAllVotingsUseCase getAllVotingsUseCase;
+
     private final VotingRequestMapper votingRequestMapper;
     private final VotingResponseMapper votingResponseMapper;
 

@@ -25,7 +25,7 @@ public class UseCaseConfiguration {
     }
 
     @Bean
-    public GetAllVotingsUseCase createVotingUseCase(GetAllVotingsGateway getAllVotingsGateway) {
+    public GetAllVotingsUseCase getAllVotingsUseCase(GetAllVotingsGateway getAllVotingsGateway) {
         return new GetAllVotingsUseCase(getAllVotingsGateway);
     }
 
