@@ -28,8 +28,8 @@ public class Voting {
 
     public boolean isOpen() {
         LocalDateTime now = LocalDateTime.now();
-        boolean doesNotHaveMinimumCandidates = candidates.size() <= 1;
-        return doesNotHaveMinimumCandidates || now.isBefore(startTime) || now.isAfter(endTime);
+        boolean haveMinimumCandidates = candidates.size() > 1;
+        return haveMinimumCandidates || now.isBefore(endTime) || now.isAfter(startTime);
     }
 
     public List<Candidate> getCandidates() {

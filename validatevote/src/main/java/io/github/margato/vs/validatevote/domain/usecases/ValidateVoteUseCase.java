@@ -17,18 +17,8 @@ public class ValidateVoteUseCase {
         Voting voting = getVotingByIdGateway.findById(votingId);
         log.info(voting.toString());
 
-        if (voting.isClosed()) {
-            log.error("Voting {} already closed", voting.getId());
-            return;
-        }
-
-        if (voting.doesNotHaveMinimumCandidates()) {
-            log.error("Voting {} does not have minimum candidates", voting.getId());
-            return;
-        }
-
-        if (!voting.hasCandidate(candidateId)) {
-            log.error("Voting {} does not have candidate {}", voting.getId(), candidateId);
+        if (!voting.isOpen()) {
+            log.error("Voting {} is not open", voting.getId());
             return;
         }
 
