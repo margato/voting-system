@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/votings/{voting_id}/votes")
+@RequestMapping(value = "/votings/{voting_id}")
 @RequiredArgsConstructor
 public class VoteController {
     private final AsyncVoteUseCase asyncVoteUseCase;
