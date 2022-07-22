@@ -2,12 +2,14 @@ package io.github.margato.vs.validatevote.domain.entities;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Builder
+@ToString
 public class Voting {
     private String id;
     private LocalDateTime startTime;
