@@ -23,6 +23,8 @@ public class ConsolidateVoteUseCase {
             votesPerCandidate.put(candidateId, votesPerCandidate.get(candidateId) + 1);
         });
 
+        log.info(votesPerCandidate);
+
         votesPerCandidate.forEach(updateVoteCountGateway::update);
     }
 }
