@@ -1,5 +1,6 @@
 package io.github.margato.vs.validatevote.configuration.redis;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.cache.annotation.EnableCaching;
@@ -18,6 +19,7 @@ public class RedisConfiguration {
     public ObjectMapper mapper() {
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+        mapper.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
         return mapper;
     }
 
