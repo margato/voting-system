@@ -23,6 +23,9 @@ public class CandidateEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
+    @Column(name = "votes")
+    private int votes;
+
     @ManyToOne
     @JoinColumn(name = "voting_id")
     private VotingEntity voting;

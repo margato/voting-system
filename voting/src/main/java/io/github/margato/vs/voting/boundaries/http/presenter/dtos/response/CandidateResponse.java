@@ -15,6 +15,9 @@ public class CandidateResponse {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("votes")
+    private int votes;
+
     @JsonProperty("image_url")
     private String imageUrl;
 }

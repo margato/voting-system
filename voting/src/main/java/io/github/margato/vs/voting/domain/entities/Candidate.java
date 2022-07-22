@@ -9,6 +9,7 @@ public class Candidate {
     private String id;
     private String name;
     private String imageUrl;
+    private String votes;
 
     @Override
     public String toString() {
