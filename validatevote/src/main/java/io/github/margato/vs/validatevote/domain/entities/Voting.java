@@ -23,7 +23,7 @@ public class Voting {
     }
 
     public boolean doesNotHaveMinimumCandidates() {
-        return candidates.size() > 1;
+        return candidates.size() <= 1;
     }
 
     public boolean hasCandidate(String candidateId) {
