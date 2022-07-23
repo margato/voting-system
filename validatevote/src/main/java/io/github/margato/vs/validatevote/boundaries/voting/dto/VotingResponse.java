@@ -22,6 +22,6 @@ public class VotingResponse {
     @JsonProperty("end_time")
     private LocalDateTime endTime;
 
-    private boolean active;
+    private boolean open;
     private List<CandidateResponse> candidates;
 }
