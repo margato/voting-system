@@ -29,7 +29,7 @@ public class Voting {
     public boolean isOpen() {
         LocalDateTime now = LocalDateTime.now();
         boolean haveMinimumCandidates = candidates.size() > 1;
-        return haveMinimumCandidates || now.isBefore(endTime) || now.isAfter(startTime);
+        return haveMinimumCandidates && now.isAfter(startTime) && now.isBefore(endTime);
     }
 
     public int getTotalVotes() {
