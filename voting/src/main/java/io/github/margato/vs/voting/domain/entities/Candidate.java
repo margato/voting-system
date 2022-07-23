@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class Candidate {
+public class Candidate implements Comparable<Candidate> {
     private String id;
     private String name;
     private String imageUrl;
@@ -17,5 +17,13 @@ public class Candidate {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Candidate candidate) {
+        if (this == candidate) return 0;
+
+        if (candidate.getVotes() > this.getVotes()) return 1;
+        else return -1;
     }
 }

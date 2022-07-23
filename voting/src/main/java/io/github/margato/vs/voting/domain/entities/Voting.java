@@ -33,8 +33,7 @@ public class Voting {
     }
 
     public List<Candidate> getCandidates() {
-        candidates.sort(Comparator.comparing(Candidate::getVotes));
-        candidates.sort(Collections.reverseOrder());
+        Collections.sort(candidates);
         return candidates;
     }
 
