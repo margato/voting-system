@@ -124,6 +124,32 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"url": {
+							"raw": "{{vote_url}}/votings/v1/votings/{{voting_id}}/candidates/{{candidate_id}}/votes",
+							"host": [
+								"{{vote_url}}"
+							],
+							"path": [
+								"votings",
+								"v1",
+								"votings",
+								"{{voting_id}}",
+								"candidates",
+								"{{candidate_id}}",
+								"votes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Votings",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"candidate_id\": \"{{candidate_id}}\"\n}",
@@ -134,16 +160,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{vote_url}}/votings/v1/votings/{{voting_id}}/votes",
+							"raw": "{{voting_url}}/votings/v1/votings",
 							"host": [
-								"{{vote_url}}"
+								"{{voting_url}}"
 							],
 							"path": [
 								"votings",
 								"v1",
-								"votings",
-								"{{voting_id}}",
-								"votes"
+								"votings"
 							]
 						}
 					},
