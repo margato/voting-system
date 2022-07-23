@@ -5,7 +5,6 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Getter
@@ -14,6 +13,7 @@ public class Voting {
     private String id;
     private String name;
     private boolean open;
+    private int totalVotes;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private List<Candidate> candidates;
@@ -30,6 +30,13 @@ public class Voting {
         LocalDateTime now = LocalDateTime.now();
         boolean haveMinimumCandidates = candidates.size() > 1;
         return haveMinimumCandidates || now.isBefore(endTime) || now.isAfter(startTime);
+    }
+
+    public int getTotalVotes() {
+        return candidates.stream()
+                .map(Candidate::getVotes)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public List<Candidate> getCandidates() {

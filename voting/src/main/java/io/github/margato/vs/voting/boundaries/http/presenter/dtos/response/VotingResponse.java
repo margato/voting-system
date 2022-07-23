@@ -27,6 +27,9 @@ public class VotingResponse {
     @JsonProperty("open")
     private boolean open;
 
+    @JsonProperty("total_votes")
+    private int totalVotes;
+
     @JsonProperty("candidates")
     private List<CandidateResponse> candidates;
 }
