@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Builder
-@JsonPropertyOrder({"id", "name", "start_time", "end_time",  "active"})
+@JsonPropertyOrder({"id", "name", "start_time", "end_time",  "open", "total_votes", "candidates"})
 public class VotingResponse {
     @JsonProperty("id")
     private String id;
