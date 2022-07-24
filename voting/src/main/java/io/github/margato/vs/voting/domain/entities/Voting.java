@@ -50,7 +50,7 @@ public class Voting {
 
     public boolean canAddCandidate() {
         LocalDateTime now = LocalDateTime.now();
-        return now.isBefore(endTime);
+        return now.isBefore(startTime);
     }
 
     public boolean cannotAddCandidate() {
