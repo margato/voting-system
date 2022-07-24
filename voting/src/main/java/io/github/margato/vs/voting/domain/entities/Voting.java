@@ -19,6 +19,7 @@ public class Voting {
     private LocalDateTime endTime;
     private List<Candidate> candidates;
     private LocalDateTime createdAt;
+    private Candidate winner;
 
     @Override
     public String toString() {
@@ -26,6 +27,14 @@ public class Voting {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public Candidate getWinner() {
+        if (!isOpen() && candidates != null && candidates.size() > 1) {
+            return candidates.get(0);
+        }
+
+        return null;
     }
 
     public boolean isOpen() {
