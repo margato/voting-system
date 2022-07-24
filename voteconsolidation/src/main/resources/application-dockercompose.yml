@@ -27,4 +27,4 @@ spring:
         spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
       #fetch-max-wait: 100000
       #fetch-min-size: 12000
-      #max-poll-records: 100
+      max-poll-records: 50
