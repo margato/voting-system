@@ -27,6 +27,7 @@ public class VotingRestAdapter implements GetVotingByIdGateway {
             log.info("Voting retrieved by API: {}", response.getBody().getVoting().getId());
             return votingResponseMapper.toDomain(response.getBody().getVoting());
         } catch (Exception e) {
+            log.error("Invalid voting: " + id);
             throw new InvalidVotingException();
         }
     }
