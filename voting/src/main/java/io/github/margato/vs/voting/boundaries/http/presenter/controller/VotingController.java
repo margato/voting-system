@@ -50,7 +50,7 @@ public class VotingController {
     @ResponseStatus(HttpStatus.OK)
     public BaseResponse<List<VotingResponse>> get() {
         List<Voting> votings = this.getAllVotingsUseCase.getAll();
-        log.info("Votings retrieved");
+        log.info("Votings retrieved: " + votings.size());
         return new BaseResponse<>(votings.stream().map(votingResponseMapper::fromDomain).collect(Collectors.toList()));
     }
 }
