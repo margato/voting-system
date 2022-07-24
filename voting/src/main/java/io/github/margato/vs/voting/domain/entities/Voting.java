@@ -18,6 +18,7 @@ public class Voting {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private List<Candidate> candidates;
+    private LocalDateTime createdAt;
 
     @Override
     public String toString() {

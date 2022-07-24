@@ -37,4 +37,7 @@ public class VotingEntity {
 
     @OneToMany(mappedBy = "voting")
     private List<CandidateEntity> candidates;
+
+    @Column(name="created_at", insertable = false)
+    private LocalDateTime createdAt;
 }

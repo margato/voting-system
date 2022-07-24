@@ -33,6 +33,9 @@ public class VotingResponse {
     @JsonProperty("total_votes")
     private int totalVotes;
 
+    @JsonProperty("created_at")
+    private LocalDateTime createdAt;
+
     @JsonProperty("candidates")
     private List<CandidateResponse> candidates;
 }

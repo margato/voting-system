@@ -8,6 +8,7 @@ import io.github.margato.vs.voting.domain.gateways.CreateVotingGateway;
 import io.github.margato.vs.voting.domain.gateways.GetAllVotingsGateway;
 import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -39,6 +40,6 @@ public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingB
 
     @Override
     public List<Voting> findAll() {
-        return votingEntityMapper.toDomain(votingRepository.findAll());
+        return votingEntityMapper.toDomain(votingRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt")));
     }
 }
