@@ -1,6 +1,5 @@
 package io.github.margato.vs.validatevote.boundaries.voting.adapter;
 
-import feign.FeignException;
 import io.github.margato.vs.validatevote.boundaries.voting.dataprovider.VotingDataProvider;
 import io.github.margato.vs.validatevote.boundaries.voting.dto.VotingWrapperResponse;
 import io.github.margato.vs.validatevote.boundaries.voting.mapper.VotingResponseMapper;
@@ -27,7 +26,7 @@ public class VotingRestAdapter implements GetVotingByIdGateway {
             ResponseEntity<VotingWrapperResponse> response = votingDataProvider.getVotingById(id);
             log.info("Voting retrieved by API: {}", response.getBody().getVoting().getId());
             return votingResponseMapper.toDomain(response.getBody().getVoting());
-        } catch (FeignException.FeignClientException.BadRequest | NullPointerException e) {
+        } catch (Exception e) {
             throw new InvalidVotingException();
         }
     }
