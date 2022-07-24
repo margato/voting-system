@@ -17,6 +17,10 @@ public class CandidatePersistenceAdapter implements UpdateVoteCountGateway {
 
     @Override
     public void update(String candidateId, int votesReceived) throws InvalidCandidateException {
-        candidateRepository.updateCount(UUID.fromString(candidateId), votesReceived);
+        try {
+            candidateRepository.updateCount(UUID.fromString(candidateId), votesReceived);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
