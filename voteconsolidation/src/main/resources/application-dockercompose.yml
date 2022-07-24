@@ -15,6 +15,7 @@ spring:
   kafka:
     listener:
       ack-mode: MANUAL
+      type: batch
     consumer:
       group-id: votes-consolidation
       bootstrap-servers: kafkabroker:9092
@@ -26,5 +27,6 @@ spring:
         spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
       #fetch-max-wait: 100000
+
       fetch-min-size: 5000
       max-poll-records: 50
