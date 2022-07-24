@@ -17,6 +17,11 @@ public class Voting {
     private boolean open;
     private List<Candidate> candidates;
 
+    public boolean isOpen() {
+        LocalDateTime now = LocalDateTime.now();
+        boolean haveMinimumCandidates = candidates.size() > 1;
+        return haveMinimumCandidates && now.isAfter(startTime) && now.isBefore(endTime);
+    }
 
     public boolean hasCandidate(String candidateId) {
         return candidates

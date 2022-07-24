@@ -21,7 +21,7 @@ public class VotingRestAdapter implements GetVotingByIdGateway {
     private final VotingResponseMapper votingResponseMapper;
 
     @Override
-//    @Cacheable(value = "Votings")
+    @Cacheable(value = "Voting")
     public Voting findById(String id){
         try {
             ResponseEntity<VotingWrapperResponse> response = votingDataProvider.getVotingById(id);

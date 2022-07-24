@@ -18,7 +18,12 @@ public class ValidateVoteUseCase {
         log.info(voting.toString());
 
         if (!voting.isOpen()) {
-            log.error("Voting {} is not open", voting.getId());
+            log.error("Voting {} is not open", votingId);
+            return;
+        }
+
+        if (!voting.hasCandidate(candidateId)) {
+            log.error("Candidate {} does not belong to {}", candidateId, votingId);
             return;
         }
 
