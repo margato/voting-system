@@ -4,11 +4,13 @@ import io.github.margato.vs.voting.boundaries.persistence.entities.VotingEntity;
 import io.github.margato.vs.voting.boundaries.persistence.mappers.VotingEntityMapper;
 import io.github.margato.vs.voting.boundaries.persistence.repository.VotingRepository;
 import io.github.margato.vs.voting.domain.entities.Voting;
+import io.github.margato.vs.voting.domain.exceptions.VotingNotFoundException;
 import io.github.margato.vs.voting.domain.gateways.CreateVotingGateway;
 import io.github.margato.vs.voting.domain.gateways.GetAllVotingsGateway;
 import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
 import io.github.margato.vs.voting.domain.gateways.RemoveVotingByIdGateway;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
@@ -48,8 +50,8 @@ public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingB
     public void remove(String id) {
         try {
             votingRepository.deleteById(UUID.fromString(id));
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (EmptyResultDataAccessException e) {
+            throw new VotingNotFoundException();
         }
     }
 }
