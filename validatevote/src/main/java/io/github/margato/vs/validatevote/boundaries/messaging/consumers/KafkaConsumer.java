@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.margato.vs.validatevote.boundaries.messaging.dtos.KafkaMessage;
 import io.github.margato.vs.validatevote.boundaries.messaging.dtos.VotingPayload;
+import io.github.margato.vs.validatevote.domain.exceptions.InvalidVotingException;
 import io.github.margato.vs.validatevote.domain.usecases.ValidateVoteUseCase;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -35,6 +36,8 @@ public class KafkaConsumer {
 
             VotingPayload votingPayload = mapper.readValue(kafkaMessage.getPayload().toString(), VotingPayload.class);
             validateVoteUseCase.validate(votingPayload.getVotingId(), votingPayload.getCandidateId());
+            ack.acknowledge();
+        } catch (InvalidVotingException e) {
             ack.acknowledge();
         } catch (Exception e) {
             e.printStackTrace();

@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Log4j2
 @RequiredArgsConstructor
 public class KafkaConsumer {
-    private final ConsolidateVoteUseCase validateVoteUseCase;
+    private final ConsolidateVoteUseCase consolidateVoteUseCase;
     private final ObjectMapper mapper;
 
     @KafkaListener(topics = "${kafka.topic.process-vote}")
@@ -46,7 +46,7 @@ public class KafkaConsumer {
                             .build())
                     .collect(Collectors.toList());
 
-            validateVoteUseCase.consolidate(votes);
+            consolidateVoteUseCase.consolidate(votes);
             ack.acknowledge();
         } catch (Exception e) {
             e.printStackTrace();
