@@ -26,6 +26,6 @@ spring:
         spring.json.type.mapping: io.github.margato.vs.validatevote.boundaries.messaging.dtos.KafkaMessage:io.github.margato.vs.voteconsolidation.boundaries.messaging.dtos.KafkaMessage
         spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
         spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
-      fetch-max-wait: 3000
+      fetch-max-wait: 10000
       fetch-min-size: 50000
-      max-poll-records: 50
+      max-poll-records: 500
