@@ -15,14 +15,9 @@ import java.time.Duration;
 @EnableCaching
 public class RedisConfiguration {
     @Bean
-    public ObjectMapper mapper() {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        return mapper;
-    }
-
-    @Bean
     public RedisCacheConfiguration cacheConfiguration(ObjectMapper mapper) {
+        mapper.registerModule(new JavaTimeModule());
+
         return RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofMinutes(5))
                 .disableCachingNullValues()
