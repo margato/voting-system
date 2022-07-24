@@ -35,7 +35,7 @@ public class VotingEntity {
     @Column(name = "active")
     private boolean active;
 
-    @OneToMany(mappedBy = "voting")
+    @OneToMany(mappedBy = "voting", cascade = CascadeType.REMOVE)
     private List<CandidateEntity> candidates;
 
     @Column(name="created_at", insertable = false)

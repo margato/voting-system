@@ -1,13 +1,7 @@
 package io.github.margato.vs.voting.configuration.usecases;
 
-import io.github.margato.vs.voting.domain.gateways.AddCandidateGateway;
-import io.github.margato.vs.voting.domain.gateways.CreateVotingGateway;
-import io.github.margato.vs.voting.domain.gateways.GetAllVotingsGateway;
-import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
-import io.github.margato.vs.voting.domain.usecases.AddCandidateUseCase;
-import io.github.margato.vs.voting.domain.usecases.CreateVotingUseCase;
-import io.github.margato.vs.voting.domain.usecases.GetAllVotingsUseCase;
-import io.github.margato.vs.voting.domain.usecases.GetVotingByIdUseCase;
+import io.github.margato.vs.voting.domain.gateways.*;
+import io.github.margato.vs.voting.domain.usecases.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,6 +26,11 @@ public class UseCaseConfiguration {
     @Bean
     public GetVotingByIdUseCase getVotingByIdUseCase(GetVotingByIdGateway getVotingByIdGateway) {
         return new GetVotingByIdUseCase(getVotingByIdGateway);
+    }
+
+    @Bean
+    public RemoveVotingByIdUseCase removeVotingByIdUseCase(RemoveVotingByIdGateway removeVotingByIdGateway) {
+        return new RemoveVotingByIdUseCase(removeVotingByIdGateway);
     }
 
 }

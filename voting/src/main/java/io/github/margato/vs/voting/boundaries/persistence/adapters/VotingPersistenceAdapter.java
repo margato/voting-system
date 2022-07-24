@@ -7,6 +7,7 @@ import io.github.margato.vs.voting.domain.entities.Voting;
 import io.github.margato.vs.voting.domain.gateways.CreateVotingGateway;
 import io.github.margato.vs.voting.domain.gateways.GetAllVotingsGateway;
 import io.github.margato.vs.voting.domain.gateways.GetVotingByIdGateway;
+import io.github.margato.vs.voting.domain.gateways.RemoveVotingByIdGateway;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
-public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingByIdGateway, GetAllVotingsGateway {
+public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingByIdGateway, GetAllVotingsGateway, RemoveVotingByIdGateway {
     private final VotingRepository votingRepository;
     private final VotingEntityMapper votingEntityMapper;
 
@@ -41,5 +42,14 @@ public class VotingPersistenceAdapter implements CreateVotingGateway, GetVotingB
     @Override
     public List<Voting> findAll() {
         return votingEntityMapper.toDomain(votingRepository.findAll(Sort.by(Sort.Direction.DESC, "createdAt")));
+    }
+
+    @Override
+    public void remove(String id) {
+        try {
+            votingRepository.deleteById(UUID.fromString(id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
