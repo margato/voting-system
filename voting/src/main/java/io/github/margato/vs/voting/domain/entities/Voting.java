@@ -41,6 +41,9 @@ public class Voting {
     }
 
     public List<Candidate> getCandidates() {
+        if (candidates == null) {
+            return null;
+        }
         Collections.sort(candidates);
         return candidates;
     }
