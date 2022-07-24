@@ -12,8 +12,12 @@ import java.time.LocalDateTime;
 public class VotingRequest {
     @JsonProperty("start_time")
     private LocalDateTime startTime;
+
     @JsonProperty("end_time")
     private LocalDateTime endTime;
+
+    @JsonProperty("image_url")
+    private String imageUrl;
 
     private String name;
 }

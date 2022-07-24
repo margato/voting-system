@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS votings
     id             BINARY(16) PRIMARY KEY,
     start_time     TIMESTAMP,
     end_time       TIMESTAMP,
+    image_url      VARCHAR(1024),
     name           VARCHAR(200),
     active         BOOLEAN,
     created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

@@ -28,6 +28,9 @@ public class VotingEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @Setter
     @Column(name = "active")
     private boolean active;

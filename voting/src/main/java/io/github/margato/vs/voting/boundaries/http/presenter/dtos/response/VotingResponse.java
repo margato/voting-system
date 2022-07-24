@@ -18,6 +18,9 @@ public class VotingResponse {
     @JsonProperty("name")
     private String name;
 
+    @JsonProperty("image_url")
+    private String imageUrl;
+
     @JsonProperty("start_time")
     private LocalDateTime startTime;
 

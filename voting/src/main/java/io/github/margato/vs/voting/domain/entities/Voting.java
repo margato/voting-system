@@ -11,6 +11,7 @@ import java.util.List;
 @Builder
 public class Voting {
     private String id;
+    private String imageUrl;
     private String name;
     private boolean open;
     private int totalVotes;
